@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIKIMORI STORE | ADMIN LOGIN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root { --pink-shiki: #ffb7c5; --bg-dark: #0a0a0c; --card: #16161a; --gold: #ffd700; }
+        body { background-color: var(--bg-dark); color: white; font-family: sans-serif; height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .login-card { background: var(--card); border: 2px solid var(--pink-shiki); border-radius: 20px; padding: 40px 30px; text-align: center; width: 100%; max-width: 380px; box-shadow: 0 10px 30px rgba(255,183,197,0.3); }
+        .shiki-logo { border: 4px solid var(--pink-shiki); border-radius: 50%; padding: 15px; margin-bottom: 25px; display: inline-block; background: black; }
+        .form-control { background: #000 !important; color: var(--gold) !important; border: 1px solid var(--gold) !important; border-radius: 12px; font-weight: 900; letter-spacing: 1px; }
+        .btn-login { background: linear-gradient(45deg, var(--gold), #ff8c00); color: black; font-weight: 900; width: 100%; padding: 14px; border-radius: 12px; border: none; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); margin-top: 20px; transition: 0.3s; }
+        .btn-login:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="shiki-logo">
+            <i class="bi bi-person-badge fs-1" style="color: var(--gold);"></i>
+        </div>
+        <h4 class="fw-bold mb-1">SHIKIMORI ADMIN</h4>
+        <p class="small text-white-50 mb-4">Masukkan Kode Owner Sultan</p>
+        
+        <input type="text" id="ownerCode" class="form-control text-center" placeholder="Masukin Kode Owner Lu!">
+        <p class="small text-danger mt-2 d-none" id="errorMsg">Kode Salah Sepuh! Kumat dah lu.</p>
+        
+        <button class="btn-login" onclick="cekLogin()">GAS LOGIN ADMIN <i class="bi bi-door-open-fill"></i></button>
+    </div>
+
+    <script>
+        function cekLogin() {
+            // Kode Owner Lu: 𝙃𝙄𝙍𝙊 𝙒𝘼𝙉𝙂𝙂Y117©
+            const ownerCodeFix = "HIRO WANGGY117©"; // Sori gue ilangin font specialnya biar JS gampang baca.
+            const input = document.getElementById('ownerCode').value;
+            
+            if (input === ownerCodeFix) {
+                // Simpan status login di local HP
+                localStorage.setItem('admin_login', 'true');
+                window.location.href = "admin.html"; // Pindah ke Dashboard
+            } else {
+                document.getElementById('errorMsg').classList.remove('d-none');
+            }
+        }
+    </script>
+</body>
+</html>
